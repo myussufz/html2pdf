@@ -131,9 +131,5 @@ func (p *PDF) ToFile(outputPath string) error {
 		return err
 	}
 
-	if err := p.template.WriteFile(outputPath); err != nil {
-		return err
-	}
-
-	return nil
+	return p.template.WriteFile(outputPath)
 }
