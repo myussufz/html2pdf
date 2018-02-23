@@ -38,7 +38,7 @@ This repo still under development. We accept any pull request. ^\_^
 ```go
   filepath := "public/views/data.html"
   data := map[string]interface{}{
-    "message": "hello",
+    "message": "hello", // pass data to html file
   }
   outputPath := "public/views/data.pdf"
 
