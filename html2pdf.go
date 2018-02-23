@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/revenuemonster/rm-api/package/html2pdf/wkhtmltopdf"
+	"github.com/magicwebes/html2pdf/wkhtmltopdf"
 	"github.com/valyala/fasttemplate"
 )
 
