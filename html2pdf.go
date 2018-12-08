@@ -120,6 +120,11 @@ func (p *PDF) Grayscale() *PDF {
 	return p
 }
 
+// ToByte :
+func (p *PDF) ToByte() []byte() {
+	return p.template.Bytes()
+}
+
 // ToFile :
 func (p *PDF) ToFile(outputPath string) error {
 	if p.err != nil {
