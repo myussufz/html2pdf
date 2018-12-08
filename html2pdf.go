@@ -121,7 +121,7 @@ func (p *PDF) Grayscale() *PDF {
 }
 
 // ToByte :
-func (p *PDF) ToByte() ([]byte(), error) {
+func (p *PDF) ToByte() ([]byte, error) {
 	if p.err != nil {
 		return nil, p.err
 	}
