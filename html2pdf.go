@@ -61,6 +61,7 @@ func ParseHTML(path string, data map[string]interface{}) *PDF {
 
 // ParseByte :
 func ParseByte(html []byte, data map[string]interface{}) *PDF {
+	p := new(PDF)
 	t := fasttemplate.New(string(html), "{{", "}}")
 	s := t.ExecuteFuncString(func(w io.Writer, tag string) (int, error) {
 		trimTag := strings.TrimSpace(tag)
