@@ -59,6 +59,32 @@ func ParseHTML(path string, data map[string]interface{}) *PDF {
 	return p
 }
 
+// ParseByte :
+func ParseByte(html []byte, data map[string]interface{}) *PDF {
+	t := fasttemplate.New(string(html), "{{", "}}")
+	s := t.ExecuteFuncString(func(w io.Writer, tag string) (int, error) {
+		trimTag := strings.TrimSpace(tag)
+		tagData, err := getBytes(data[trimTag])
+		if err != nil {
+			return 0, errWhileExecuteDate
+		}
+		return w.Write(tagData)
+	})
+	pdf, err := wkhtmltopdf.NewPDFGenerator()
+	if err != nil {
+		p.err = errWhileGeneratingNewPDF
+		return p
+	}
+	pdf.PageSize.Set(wkhtmltopdf.PageSizeA4)
+	pdf.Dpi.Set(300)
+	pdf.NoCollate.Set(false)
+
+	p.data = []byte(s)
+	p.template = pdf
+
+	return p
+}
+
 // Config :
 type Config struct {
 	Title       string
