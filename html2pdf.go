@@ -66,10 +66,10 @@ func ParseByte(html []byte, data map[string]interface{}) *PDF {
 	s := t.ExecuteFuncString(func(w io.Writer, tag string) (int, error) {
 		trimTag := strings.TrimSpace(tag)
 		tagData, err := getBytes(data[trimTag])
-		if err != nil {
-			return 0, errWhileExecuteDate
+		if err == nil {
+			return w.Write(tagData)
 		}
-		return w.Write(tagData)
+		return 0, nil
 	})
 	pdf, err := wkhtmltopdf.NewPDFGenerator()
 	if err != nil {
