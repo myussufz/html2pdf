@@ -152,6 +152,12 @@ func (p *PDF) ToByte() ([]byte, error) {
 	if p.err != nil {
 		return nil, p.err
 	}
+	p.template.AddPage(wkhtmltopdf.NewPageReader(strings.NewReader(string(p.data))))
+
+	if err := p.template.Create(); err != nil {
+		return nil, err
+	}
+
 	return p.template.Bytes(), nil
 }
 
