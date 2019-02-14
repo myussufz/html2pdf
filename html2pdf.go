@@ -52,6 +52,7 @@ func ParseHTML(path string, data map[string]interface{}) *PDF {
 	pdf.PageSize.Set(wkhtmltopdf.PageSizeA4)
 	pdf.Dpi.Set(300)
 	pdf.NoCollate.Set(false)
+	pdf.TOC.Zoom.Set(1)
 
 	p.data = []byte(s)
 	p.template = pdf
@@ -79,6 +80,7 @@ func ParseByte(html []byte, data map[string]interface{}) *PDF {
 	pdf.PageSize.Set(wkhtmltopdf.PageSizeA4)
 	pdf.Dpi.Set(300)
 	pdf.NoCollate.Set(false)
+	pdf.TOC.Zoom.Set(1)
 
 	p.data = []byte(s)
 	p.template = pdf
